@@ -17,7 +17,7 @@ static void libera(list_f *h);
 static int check_val(float init, float end, float toll);
 static float check_func_val(list_f *h, float x);
 
-int main()
+int main(void)
 {
 	list_f *func = NULL;
 	int check;
@@ -60,35 +60,34 @@ static list_f *reclist(list_f *h)
 	int choice;
 	h = malloc(sizeof(list_f));
 	if (h) {
-		do{
+		do {
 			printf("Insert coefficient:\n>");
-			scanf("%f",&h->a.coefficiente);
-		}while(h->a.coefficiente==0);
-		do{
+			scanf("%f", &h->a.coefficiente);
+		} while (h->a.coefficiente == 0);
+		do {
 			printf("Insert exponent:\n>");
-			scanf("%d",&h->a.esp);
-		}while(h->a.esp<0);
+			scanf("%d", &h->a.esp);
+		} while (h->a.esp < 0);
 		printf("Do you want to add anything? 1 to add.\n");
 		scanf("%d", &choice);
 		if (choice == 1)
 			h->next = reclist(h->next);
 	} else {
-		printf("Memoria esaurita. Ritorno la lista finora creata.\n");
 		h = NULL;
 	}
 	return h;
 }
 
-static void libera(list_f *h){
+static void libera(list_f *h)
+{
 	if (h) {
 		libera(h->next);
 		free(h);
-	} else {
-		return;
 	}
 }
 
-static int check_val(float init, float end, float toll){
+static int check_val(float init, float end, float toll)
+{
 	if ((fabs(init) < toll) && (fabs(init) <= fabs(end)))
 		return 1;
 	if (fabs(end) < toll)
@@ -96,7 +95,8 @@ static int check_val(float init, float end, float toll){
 	return 0;
 }
 
-static float check_func_val(list_f *h, float x){
+static float check_func_val(list_f *h, float x)
+{
 	list_f *tmp;
 	float value;
 	for (tmp = h, value = 0; tmp; tmp = tmp->next)
