@@ -9,9 +9,7 @@ int main (void)
 {
 	long i;
 	long largest = 0;
-	// Considero solo i numeri dispari (nessun pari sarà mai divisore del numero)
 	for (i = 3; i < sqrt(N); i = i + 2) {
-		// se i è divisore, e N / i è primo, N/i è il numero che stiamo cercando.
 		if (N % i == 0) {
 			if (isPrime(N / i) && N / i > largest)
 				largest = N / i;
