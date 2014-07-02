@@ -10,7 +10,7 @@ int main (void)
 {
 	long i;
 	long largest = 0;
-	for (i = 3; i <= sqrt(N) + 1; i = i + 2) {
+	for (i = 3; i <= sqrt(N) + 1; i++) {
 		if (N % i == 0) {
 			if (N / i > largest && isPrime(N / i)) {
 				largest = N / i;
