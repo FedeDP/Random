@@ -1,19 +1,22 @@
 #include <stdio.h>
 #include <math.h>
 
+
 #define N 9223372036854775807
 
-int isPrime(long x);
+static int isPrime(long x);
 
 int main (void)
 {
 	long i;
 	long largest = 0;
-	for (i = 3; i < sqrt(N); i = i + 2) {
+	for (i = 3; i <= sqrt(N) + 1; i = i + 2) {
 		if (N % i == 0) {
-			if (N / i > largest && isPrime(N / i))
+			if (N / i > largest && isPrime(N / i)) {
 				largest = N / i;
-			else if (i > largest && isPrime(i))
+				break;
+			}
+			if (i > largest && isPrime(i))
 				largest = i;
 		}
 	}
@@ -21,11 +24,15 @@ int main (void)
 	return 0;
 }
 
-int isPrime(long x) {
+static int isPrime(long x)
+{
 	long i;
+	if (x % 2 == 0)
+		return 0;
 	for (i = 3; i <= sqrt(x); i = i + 2) {
 		if (x % i == 0)
 			return 0;
 	}
 	return 1;
 }
+
