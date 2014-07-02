@@ -13,10 +13,9 @@ static int isPrime(long x);
 /*
  * we'll check specularly if i (between 3 and sqrt(N)) or N / i is prime.
  * if N/ i is prime, our work is finished. We are ready to print:
- * infact N/i will always be between sqrt(N) and N,
- * and the first found (if found) will be the largest.
- * If N/i won't find any prime factor, we have to look at i. It will update
- * "largest" var every time if finds a prime factor.
+ * infact N/i will always be between sqrt(N) and N, being the largest prime factor possible.
+ * If (for every i) N/i won't be a prime factor, we have to look at i. It will update
+ * "largest" var every time it is a prime factor.
  * So, at the end of the for cycle, we'll have again the largest prime factor.
  */
 int main (void)
