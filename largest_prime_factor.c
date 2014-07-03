@@ -50,12 +50,11 @@ static int isPrime(long x)
 	default:
 		if (x % 2 == 0)
 			return 0;
-		break;
+		for (i = 3; i <= sqrt(x); i = i + 2) {
+			if (x % i == 0)
+				return 0;
+		}
+		return 1;
 	}
-	for (i = 3; i <= sqrt(x); i = i + 2) {
-		if (x % i == 0)
-			return 0;
-	}
-	return 1;
 }
 
