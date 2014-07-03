@@ -6,7 +6,7 @@
 #include <stdio.h>
 #include <math.h>
 
-#define N 9223372036854775807
+#define N 30
 
 static int isPrime(long x);
 
@@ -27,11 +27,11 @@ int main (void)
 		inc = 2;
 	for (i = 3; i <= sqrt(N); i = i + inc) {
 		if (N % i == 0) {
-			if (N / i > largest && isPrime(N / i)) {
+			if (isPrime(N / i)) {
 				largest = N / i;
 				break;
 			}
-			if (i > largest && isPrime(i))
+			if (isPrime(i))
 				largest = i;
 		}
 	}
