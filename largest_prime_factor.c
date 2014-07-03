@@ -6,7 +6,7 @@
 #include <stdio.h>
 #include <math.h>
 
-#define N 6982910293
+#define N 9223372036854775806
 
 static int isPrime(long x);
 
