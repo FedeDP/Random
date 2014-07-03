@@ -20,13 +20,11 @@ static int isPrime(long x);
  */
 int main (void)
 {
-	int inc;
 	long i;
 	long largest = 0;
+	int inc = 1;
 	if (N % 2 != 0)
 		inc = 2;
-	else
-		inc = 1;
 	for (i = 3; i <= sqrt(N); i = i + inc) {
 		if (N % i == 0) {
 			if (N / i > largest && isPrime(N / i)) {
