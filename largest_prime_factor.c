@@ -6,12 +6,12 @@
 #include <stdio.h>
 #include <math.h>
 
-#define N 30
+#define N 4
 
 static int isPrime(long x);
 
 /*
- * we'll check specularly if i (between 3 and sqrt(N)) or N / i is prime.
+ * we'll check specularly if i (between 1+inc and sqrt(N)) or N / i is prime.
  * if N/ i is prime, our work is finished. We are ready to print:
  * infact N/i will always be between sqrt(N) and N, being the largest prime factor possible.
  * If (for every i) N/i won't be a prime factor, we have to look at i. It will update
@@ -25,7 +25,7 @@ int main (void)
 	int inc = 1;
 	if (N % 2 != 0)
 		inc = 2;
-	for (i = 3; i <= sqrt(N); i = i + inc) {
+	for (i = 1 + inc; i <= sqrt(N); i = i + inc) {
 		if (N % i == 0) {
 			if (isPrime(N / i)) {
 				largest = N / i;
@@ -42,7 +42,9 @@ int main (void)
 static int isPrime(long x)
 {
 	long i;
-	if (x % 2 == 0)
+	if (x == 2)
+		return 1;
+	if (x % 2 == 0 || x == 1)
 		return 0;
 	for (i = 3; i <= sqrt(x); i = i + 2) {
 		if (x % i == 0)
