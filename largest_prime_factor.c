@@ -20,36 +20,36 @@ static int isPrime(long x);
  */
 int main (void)
 {
-	long i;
-	long largest = 0;
-	int inc = 1;
-	if (N % 2 != 0)
-		inc = 2;
-	for (i = 1 + inc; i <= sqrt(N); i = i + inc) {
-		if (N % i == 0) {
-			if (isPrime(N / i)) {
-				largest = N / i;
-				break;
-			}
-			if (isPrime(i))
-				largest = i;
-		}
-	}
-	printf("%lu", largest);
-	return 0;
+    long i;
+    long largest = 0;
+    int inc = 1;
+    if (N % 2 != 0)
+        inc = 2;
+    for (i = 1 + inc; i <= sqrt(N); i = i + inc) {
+        if (N % i == 0) {
+            if (isPrime(N / i)) {
+                largest = N / i;
+                break;
+            }
+            if (isPrime(i))
+                largest = i;
+        }
+    }
+    printf("%lu", largest);
+    return 0;
 }
 
 static int isPrime(long x)
 {
-	long i;
-	if (x == 1 || x % 2 == 0)
-		return 0;
-	if (x == 2)
-		return 1;
+    long i;
+    if (x == 1 || x % 2 == 0)
+        return 0;
+    if (x == 2)
+        return 1;
     for (i = 3; i <= sqrt(x); i = i + 2) {
-		if (x % i == 0)
-			return 0;
-	}
-	return 1;
+        if (x % i == 0)
+            return 0;
+    }
+    return 1;
 }
 
