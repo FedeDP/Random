@@ -6,7 +6,7 @@
 #include <stdio.h>
 #include <math.h>
 
-#define N 9223372036854775806
+#define N 9223372036854775807
 
 static int isPrime(long x);
 
@@ -42,19 +42,14 @@ int main (void)
 static int isPrime(long x)
 {
 	long i;
-	switch (x) {
-	case 1:
+	if (x == 1 || x % 2 == 0)
 		return 0;
-	case 2:
+	if (x == 2)
 		return 1;
-	default:
-		if (x % 2 == 0)
+    for (i = 3; i <= sqrt(x); i = i + 2) {
+		if (x % i == 0)
 			return 0;
-		for (i = 3; i <= sqrt(x); i = i + 2) {
-			if (x % i == 0)
-				return 0;
-		}
-		return 1;
 	}
+	return 1;
 }
 
