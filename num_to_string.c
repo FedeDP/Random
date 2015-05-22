@@ -11,8 +11,7 @@ const char high_str[2][20] = {"hundred ", "thousand "};
 
 int main(void)
 {
-    char final_str[100];
-    char temp[20];
+    char final_str[100], temp[20];
     int x, i = 100000;
     final_str[0] = '\0';
     do {
@@ -21,9 +20,10 @@ int main(void)
     } while (x > MAX);
     while (i != 0) {
         if (x / i != 0) {
+            memset(temp, 0, strlen(temp));
             switch (i) {
             case 10: case 10000:
-                if (x > 20)
+                if (x / i > 1)
                     sprintf(temp, "%s", dozens_str[(x / i) - 2]);
                 break;
             default:
@@ -34,7 +34,8 @@ int main(void)
             if ((i == 100) || (i == 100000) || (i == 1000))
                 strcat(final_str, high_str[(i / 1000) % 100]);
         }
-        x = x % i;
+        if (strlen(temp))
+            x = x % i;
         i = i / 10;
     }
     printf("%s\n", final_str);
