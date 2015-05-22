@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#define MAX 99999
+#define MAX 999999
 
 const char lower_str[19][20] = {"one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten",
                     "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"};
@@ -21,11 +21,16 @@ int main(void)
     while (i != 0) {
         if (x / i != 0) {
             switch (i) {
-            case 1000: case 100:
+                case 1000: case 100:
                 if ((i == 100) || (x / i < 20) || ((x / i) % 10 == 0))
                     sprintf(temp, "%s %s ", lower_str[x / i - 1], high_str[i / 1000]);
-                else
+                else {
+                    if ((x / i) >= 100) {
+                        sprintf(final_str, "%s %s ", lower_str[x / (i * 100) - 1], high_str[0]);
+                        x = x % (i * 100);
+                    }
                     sprintf(temp, "%s%s %s ", dozens_str[(x / (i * 10))  - 2], lower_str[(x % (i * 10) / 1000) - 1] , high_str[1]);
+                }
                 break;
             case 10: case 1:
                 if (x < 20) {
