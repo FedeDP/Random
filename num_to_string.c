@@ -12,8 +12,10 @@ int main(void)
     char temp[20];
     int x, i = 1000;
     final_str[0] = '\0';
-    printf("Insert number:> ");
-    scanf("%d", &x);
+    do {
+        printf("Insert number:> ");
+        scanf("%d", &x);
+    } while (x > 99999);
     while (i != 0) {
         if (x / i != 0) {
             switch (i) {
@@ -27,7 +29,7 @@ int main(void)
                 sprintf(temp, "%s %s ", lower_str[x / i - 1], high_str[0]);
                 break;
             case 10: case 1:
-                if ((x < 20) || (x % 10 == 0)) {
+                if (x < 20) {
                     sprintf(temp, "%s", lower_str[x - 1]);
                     i = 0;
                 } else {
