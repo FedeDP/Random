@@ -3,8 +3,9 @@
 
 #define MAX 999999
 
-const char lower_str[19][20] = {"one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten",
-                    "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"};
+const char lower_str[19][20] = {"one", "two", "three", "four", "five", "six", "seven",
+                                "eight", "nine", "ten", "eleven", "twelve", "thirteen",
+                                "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"};
 const char dozens_str[8][20] = {"twenty", "thirty", "fourty", "fifty", "sixty", "seventy", "eighty", "ninety"};
 const char high_str[2][20] = {"hundred ", "thousand "};
 
@@ -30,10 +31,8 @@ int main(void)
                 break;
             }
             strcat(final_str, temp);
-            if ((i == 100) || (i == 100000))
-                strcat(final_str, high_str[0]);
-            if (i == 1000)
-                strcat(final_str, high_str[1]);
+            if ((i == 100) || (i == 100000) || (i == 1000))
+                strcat(final_str, high_str[(i / 1000) % 100]);
         }
         x = x % i;
         i = i / 10;
