@@ -21,18 +21,17 @@ int main(void)
     while (i != 0) {
         if (x / i != 0) {
             switch (i) {
-            case 100: case 100000:
-                sprintf(temp, "%s %s", lower_str[x / i - 1], high_str[0]);
-                break;
             case 10: case 10000:
                 if (x > 20)
                     sprintf(temp, "%s", dozens_str[(x / i) - 2]);
                 break;
-            case 1: case 1000:
+            default:
                 sprintf(temp, "%s ", lower_str[x / i - 1]);
                 break;
             }
             strcat(final_str, temp);
+            if ((i == 100) || (i == 100000))
+                strcat(final_str, high_str[0]);
             if (i == 1000)
                 strcat(final_str, high_str[1]);
         }
