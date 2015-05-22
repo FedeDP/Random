@@ -3,7 +3,7 @@
 
 #define MAX 99999
 
-const char lower_str[29][20] = {"one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten",
+const char lower_str[19][20] = {"one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten",
                     "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"};
 const char dozens_str[8][20] = {"twenty", "thirty", "fourty", "fifty", "sixty", "seventy", "eighty", "ninety"};
 const char high_str[2][20] = {"hundred", "thousand"};
