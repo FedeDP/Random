@@ -34,7 +34,7 @@ int main(int argc, char *argv[])
                 printf("%s", lower_str[n]);
                 l = (int)(log10(i)) % 3;
                 if ((i != 1) && ((l == 0) || (l == 2)))
-                    printf(" %s ", higher_str[((int)log10(i) + 1) % 3]);
+                    printf(" %s ", higher_str[(l + 1) % 3]);
             }
         }
     }
