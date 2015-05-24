@@ -24,7 +24,7 @@ int main(int argc, char *argv[])
             continue;
         for (n = 0, i = pow(10, (int)log10(x)); i != 0; x %= i, i /= 10, n = 0) {
             if (x / i != 0) {
-                if ((x != 1) && ((int)(log10(i / 10)) % 3 == 0)) {
+                if ((i != 1) && ((int)(log10(i / 10)) % 3 == 0)) {
                     if (x / i != 1)
                         n += 18;
                     else
