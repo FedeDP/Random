@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
         printf("Usage: nts $num $num2 $num3...\n");
         return 1;
     }
-    for (p = 1; argv[p]; p++, printf("\n")) {
+    for (p = 1; p < argc; p++, printf("\n")) {
         x = atoi(argv[p]);
         if (x > UINT_MAX)
             continue;
