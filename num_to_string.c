@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include <limits.h> // max number will be 4 294 967 295
+#include <errno.h>
 
 const char lower_str[27][20] = {"one", "two", "three", "four", "five", "six", "seven",
                                 "eight", "nine", "ten", "eleven", "twelve", "thirteen",
@@ -13,15 +14,19 @@ const char higher_str[4][20] = {"hundred", "thousand", "million", "billion"};
 int main(int argc, char *argv[])
 {
     int i, n, p = 1, l;
-    unsigned int x;
+    unsigned long x;
     if (argc < 2) {
         printf("Usage: nts $num $num2 $num3...\n");
         return 1;
     }
     for (p = 1; p < argc; p++, printf("\n")) {
-        x = atoi(argv[p]);
-        if (x > UINT_MAX)
+        errno = 0;
+        x = strtoul(argv[p], NULL, 10);
+        if ((x > UINT_MAX) || ((x == ULONG_MAX) && (errno == ERANGE))) {
+            printf("Limit exceeded.");
             continue;
+        }
+        printf("%lu: ", x);
         for (n = 0, i = pow(10, (int)log10(x)); i != 0; x %= i, i /= 10, n = 0) {
             if (x / i != 0) {
                 if ((i != 1) && ((int)(log10(i / 10)) % 3 == 0)) {
