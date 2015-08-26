@@ -34,9 +34,7 @@ int main(void)
 
 static unsigned long fibonacci_rec(int n)
 {
-	if  ((n == 1) || (n == 2))
-		return 1;
-	return fibonacci_rec(n - 1) + fibonacci_rec(n - 2);
+    return (n < 3 ? 1 : fibonacci_rec(n - 1) + fibonacci_rec(n - 2));
 }
 
 static unsigned long fibonacci_it(int n)
