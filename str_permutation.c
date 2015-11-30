@@ -3,7 +3,6 @@
 
 int main(int argc, char **argv) {
     int i, j;
-    
     const char *top = "Such permutation.";
     const char *fail = "No permutation.";
     
@@ -15,7 +14,6 @@ int main(int argc, char **argv) {
         printf("%s\n", fail);
         return 0;
     }
-    
     int len = strlen(argv[1]);
     for (i = 0; (i < len - 1) && (strcmp(argv[1], argv[2]) != 0); i++) {
         for (j = i; j < len; j++) {
@@ -27,7 +25,6 @@ int main(int argc, char **argv) {
             }
         }
     }
-        
     if (strcmp(argv[1], argv[2]) == 0) {
         printf("%s\n", top);
     } else {
