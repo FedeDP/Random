@@ -22,9 +22,13 @@ int main(void) {
     
     printf("What is object's length at rest?\n");
     scanf("%f", &l0);
-
+    
+    assert(l0 >= 0);
+    
     printf("Time elapsed in moving frame?\n");
     scanf("%f", &t0);
+    
+    assert(t0 >= 0);
     
     l = l0 * factor;
     t = t0 / factor;
